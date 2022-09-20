@@ -5,7 +5,7 @@
     android:id="@+id/ma"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
 
     <FrameLayout
@@ -145,10 +145,4 @@
         </androidx.cardview.widget.CardView>
 
     </FrameLayout>
-
-    <ImageView
-        android:id="@+id/rImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
 </RelativeLayout>
