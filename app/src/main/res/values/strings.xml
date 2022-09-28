@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Mentor</string>
+    <string name="name">NAME</string>
+    <string name="roll_number">Roll Number</string>
+    <string name="department">Department</string>
+    <string name="attendance">Attendance</string>
+    <string name="send_notes">Send Notes</string>
+    <string name="upload_assignment">Upload Assignment</string>
+    <string name="upload_result">Upload Result</string>
+    <string name="upload_material">Upload Meterial</string>
+    <string name="upload_syllabus">Upload Syllabus</string>
+    <string name="todo">TODO</string>
+    <string name="welcome">Welcome</string>
+    <string name="enter_student_details">Enter Student Details</string>
+    <string name="logout">Logout</string>
+    <string name="enter_the_student_individual_details">Enter the Student Individual Details</string>
+    <string name="first_name">First Name*</string>
+    <string name="last_name">Last Name*</string>
+    <string name="student_roll_number">Student Roll Number*</string>
+    <string name="student_email">Student Email*</string>
+    <string name="student_phone_number">Student Phone Number*</string>
+    <string name="student_branch">Student Branch*</string>
+    <string name="register">Register</string>
+    <string name="aadhar_number">Aadhar number*</string>
 </resources>
