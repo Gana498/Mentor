@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF923E"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:baselineAligned="false">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/dp" />
+                android:src="@drawable/dp"
+                android:contentDescription="@string/todo" />
 
         </androidx.cardview.widget.CardView>
 
@@ -40,10 +42,9 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="113dp"
-            android:text="Welcome"
+            android:text="@string/welcome"
             android:textColor="@color/white"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/rb1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/orange"
-            android:text="Enter Your Details"
+            android:text="@string/enter_student_details"
             app:layout_constraintBottom_toTopOf="@+id/logout_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +68,7 @@
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:text="Logout"
+            android:text="@string/logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,8 +83,8 @@
         android:layout_weight="2"
         android:orientation="vertical"
         android:paddingVertical="20dp"
-        android:paddingRight="-50dp"
-        >
+        android:paddingEnd="-50dp"
+        tools:ignore="RtlSymmetry">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingRight="-150dp"
+                android:paddingEnd="-150dp"
                 >
 
 
@@ -108,10 +108,10 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter the Student Individual Details"
+                    android:text="@string/enter_the_student_individual_details"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="210dp"/>
                 <ScrollView
@@ -121,7 +121,7 @@
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginEnd="200dp"
                         android:paddingHorizontal="10dp">
@@ -131,7 +131,7 @@
                             android:id="@+id/f_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="First Name*"
+                            android:hint="@string/first_name"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -149,7 +149,7 @@
                             android:id="@+id/l_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Last Name*"
+                            android:hint="@string/last_name"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -169,7 +169,7 @@
                             android:id="@+id/roll"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Student Roll Number*"
+                            android:hint="@string/student_roll_number"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -191,7 +191,8 @@
                             android:paddingStart="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            tools:ignore="RtlSymmetry" />
 
                         <Spinner
                             android:id="@+id/gender"
@@ -199,13 +200,14 @@
                             android:paddingStart="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            tools:ignore="RtlSymmetry" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adhar"
+                            android:id="@+id/aadhar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Adhar number*"
+                            android:hint="@string/aadhar_number"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -224,7 +226,7 @@
                             android:id="@+id/email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Student Email*"
+                            android:hint="@string/student_email"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -242,7 +244,7 @@
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Student Phone Number*"
+                            android:hint="@string/student_phone_number"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -260,7 +262,7 @@
                             android:id="@+id/branch1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Student Branch*"
+                            android:hint="@string/student_branch"
                             app:hintTextColor="@color/blue"
                             android:textColorHint="@color/black"
                             app:boxBackgroundColor="@color/white"
@@ -281,13 +283,14 @@
                             android:paddingStart="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            tools:ignore="RtlSymmetry" />
 
                         <Button
                             android:id="@+id/rb2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Register"
+                            android:text="@string/register"
                             android:backgroundTint="@color/orange"
                             android:layout_gravity="center_horizontal"
                             />
