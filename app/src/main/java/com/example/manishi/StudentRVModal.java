@@ -3,7 +3,7 @@ package com.example.manishi;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class StudentRVModal implements Parcelable {
+public class StudentRVModal  {
     private String studentID, studentRollNumber, studentFullName, studentBranch, studentSection, studentYear, studentPhone, parentPhone, studentPersonalEmail,
             studentAadhaar, fatherAadhaar, motherAadhaar, studentPresentAddress, studentPermanentAddress;
 
@@ -23,18 +23,6 @@ public class StudentRVModal implements Parcelable {
         studentPresentAddress = in.readString();
         studentPermanentAddress = in.readString();
     }
-
-    public static final Creator<StudentRVModal> CREATOR = new Creator<StudentRVModal>() {
-        @Override
-        public StudentRVModal createFromParcel(Parcel in) {
-            return new StudentRVModal(in);
-        }
-
-        @Override
-        public StudentRVModal[] newArray(int size) {
-            return new StudentRVModal[size];
-        }
-    };
 
     public String getStudentID() {
         return studentID;
@@ -163,28 +151,5 @@ public class StudentRVModal implements Parcelable {
         this.motherAadhaar = motherAadhaar;
         this.studentPresentAddress = studentPresentAddress;
         this.studentPermanentAddress = studentPermanentAddress;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(studentID);
-        parcel.writeString(studentRollNumber);
-        parcel.writeString(studentFullName);
-        parcel.writeString(studentBranch);
-        parcel.writeString(studentSection);
-        parcel.writeString(studentYear);
-        parcel.writeString(studentPhone);
-        parcel.writeString(parentPhone);
-        parcel.writeString(studentPersonalEmail);
-        parcel.writeString(studentAadhaar);
-        parcel.writeString(fatherAadhaar);
-        parcel.writeString(motherAadhaar);
-        parcel.writeString(studentPresentAddress);
-        parcel.writeString(studentPermanentAddress);
     }
 }

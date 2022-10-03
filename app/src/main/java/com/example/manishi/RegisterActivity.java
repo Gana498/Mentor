@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         Register_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            startActivity(new Intent(getApplicationContext(),Student_Details.class));
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
 
