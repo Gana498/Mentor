@@ -1,18 +1,14 @@
 package com.example.manishi;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,29 +16,28 @@ public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.View
     // creating variables for our list, context, interface and position.
     private ArrayList<StudentRVModal> studentRVModalArrayList;
     private Context context;
-    private StudentClickInterface studentClickInterface;
-    int lastPos = -1;
 
     // creating a constructor.
-    public StudentRVAdapter(ArrayList<StudentRVModal> studentRVModalArrayList, Context context) {
+    public StudentRVAdapter( Context context, ArrayList<StudentRVModal> studentRVModalArrayList) {
         this.studentRVModalArrayList = studentRVModalArrayList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public StudentRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflating our layout file on below line.
         View view = LayoutInflater.from(context).inflate(R.layout.student_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull StudentRVAdapter.ViewHolder holder, int position) {
         // setting data to our recycler view item on below line.
         StudentRVModal studentRVModal = studentRVModalArrayList.get(position);
-        holder.studentNameTV.setText(studentRVModal.getStudentFullName());
-        holder.studentNumberIV.setText("Rs. " + studentRVModal.getStudentRollNumber());
+        holder.studentNameTV.setText(":"+studentRVModal.getStudentFullName());
+        holder.studentNumberIV.setText(":"+ studentRVModal.getStudentRollNumber());
         // adding animation to recycler view item on below line.
 
     }
@@ -54,7 +49,8 @@ public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // creating variable for our image view and text view on below line.
-        private TextView studentNameTV, studentNumberIV;
+        private  TextView studentNameTV;
+        private  TextView studentNumberIV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,10 +59,5 @@ public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.View
             studentNumberIV = itemView.findViewById(R.id.show_roll_number);
 
         }
-    }
-
-    // creating a interface for on click
-    public interface StudentClickInterface {
-        void onStudentClick(int position);
     }
 }
