@@ -1,62 +1,120 @@
 package com.example.manishi;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.ViewHolder> {
-    // creating variables for our list, context, interface and position.
-    private ArrayList<StudentRVModal> studentRVModalArrayList;
-    private Context context;
+// FirebaseRecyclerAdapter is a class provided by
+// FirebaseUI. it provides functions to bind, adapt and show
+// database contents in a Recycler View
+ class studentRVAdapter extends FirebaseRecyclerAdapter<
+        StudentModal, studentRVAdapter.personsViewholder> {
 
-    // creating a constructor.
-    public StudentRVAdapter( Context context, ArrayList<StudentRVModal> studentRVModalArrayList) {
-        this.studentRVModalArrayList = studentRVModalArrayList;
-        this.context = context;
+    public studentRVAdapter(
+            @NonNull FirebaseRecyclerOptions<StudentModal> options)
+    {
+        super(options);
     }
 
+    // Function to bind the view in Card view(here
+    // "person.xml") iwth data in
+    // model class(here "person.class")
+    @Override
+    protected void
+    onBindViewHolder(@NonNull personsViewholder holder,
+                     int position, @NonNull StudentModal model)
+    {
+        holder.fullName.setText(":"+ model.getStudentFullName());
+        holder.rollNumber.setText(":"+ model.getStudentRollNumber());
+        holder.Branch.setText(":"+ model.getStudentBranch());
+        holder.Year.setText(":"+ model.getStudentYear());
+        holder.Section.setText(":"+ model.getStudentSection());
+        holder.studentPhone.setText(":"+ model.getStudentPhone());
+        holder.parentPhone.setText(":"+ model.getParentPhone());
+        holder.PersonalEmail.setText(":"+ model.getStudentPersonalEmail());
+        holder.studentAadhaar.setText(":"+ model.getStudentAadhaar());
+        holder.fatherAadhaar.setText(":"+ model.getFatherAadhaar());
+        holder.motherAadhaar.setText(":"+ model.getMotherAadhaar());
+        holder.PresentAddress.setText(":"+ model.getStudentPresentAddress());
+        holder.PermanentAddress.setText(":"+ model.getStudentPermanentAddress());
+        if (model.getStudentPhone().length()!=10){
+            holder.CallBtn.setVisibility(View.GONE);
+        }
+
+        holder.showMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.linearLayout.getVisibility()!=View.VISIBLE){
+                    holder.linearLayout.setVisibility(View.VISIBLE);
+                    holder.ButtonLinearLayout.setVisibility(View.VISIBLE);
+                }
+                else {
+                    holder.linearLayout.setVisibility(View.GONE);
+                    holder.ButtonLinearLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+        holder.CallBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+    }
+
+    // Function to tell the class about the Card view (here
+    // "person.xml")in
+    // which the data will be shown
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflating our layout file on below line.
-        View view = LayoutInflater.from(context).inflate(R.layout.student_rv_item, parent, false);
-        return new ViewHolder(view);
+    public personsViewholder
+    onCreateViewHolder(@NonNull ViewGroup parent,
+                       int viewType)
+    {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.student_rv_item, parent, false);
+        return new studentRVAdapter.personsViewholder(view);
     }
 
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onBindViewHolder(@NonNull StudentRVAdapter.ViewHolder holder, int position) {
-        // setting data to our recycler view item on below line.
-        StudentRVModal studentRVModal = studentRVModalArrayList.get(position);
-        holder.studentNameTV.setText(":"+studentRVModal.getStudentFullName());
-        holder.studentNumberIV.setText(":"+ studentRVModal.getStudentRollNumber());
-        // adding animation to recycler view item on below line.
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return studentRVModalArrayList.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // creating variable for our image view and text view on below line.
-        private  TextView studentNameTV;
-        private  TextView studentNumberIV;
-
-        public ViewHolder(@NonNull View itemView) {
+    // Sub Class to create references of the views in Crad
+    // view (here "person.xml")
+    class personsViewholder
+            extends RecyclerView.ViewHolder {
+        TextView fullName, rollNumber, Year, showMore, Branch, Section,  studentPhone, parentPhone, PersonalEmail,
+                studentAadhaar, fatherAadhaar, motherAadhaar, PresentAddress, PermanentAddress;
+        LinearLayout linearLayout, ButtonLinearLayout;
+        Button CallBtn;
+        public personsViewholder(@NonNull View itemView)
+        {
             super(itemView);
-            // initializing all our variables on below line.
-            studentNameTV = itemView.findViewById(R.id.show_name);
-            studentNumberIV = itemView.findViewById(R.id.show_roll_number);
+
+            fullName = itemView.findViewById(R.id.idTVFullName);
+            rollNumber = itemView.findViewById(R.id.idTVRollNumber);
+            Branch =  itemView.findViewById(R.id.idTVBranch);
+            Year =  itemView.findViewById(R.id.idTVYear);
+
+            showMore = itemView.findViewById(R.id.idTVShowMoreDetails);
+            linearLayout = itemView.findViewById(R.id.more_details);
+            ButtonLinearLayout = itemView.findViewById(R.id.idButtonLinearLayout);
+            Section =  itemView.findViewById(R.id.idTVSection);
+            studentPhone =  itemView.findViewById(R.id.idTVStudentMobile);
+            parentPhone =  itemView.findViewById(R.id.idTVParentMobile);
+            PersonalEmail =  itemView.findViewById(R.id.idTVPersonalEmail);
+            studentAadhaar =  itemView.findViewById(R.id.idTVStudentAadhaar);
+            fatherAadhaar =  itemView.findViewById(R.id.idTVFatherAadhaar);
+            motherAadhaar =  itemView.findViewById(R.id.idTVMotherAadhaar);
+            PresentAddress =  itemView.findViewById(R.id.idTVPresentAddress);
+            PermanentAddress =  itemView.findViewById(R.id.idTVPermanentAddress);
+            CallBtn =  itemView.findViewById(R.id.idBtnCall);
+
 
         }
     }

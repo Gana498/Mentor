@@ -2,14 +2,15 @@ package com.example.manishi;
 
 import static com.example.manishi.R.id.idEdtStudentRollNumber;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,9 @@ public class AddStudentActivity extends AppCompatActivity {
     private TextInputEditText studentRollNumberEdt,studentFullNameEdt, studentBranchEdt, studentSectionEdt, studentYearEdt, studentPhoneEdt, parentPhoneEdt,studentPersonalEmailEdt,
             studentAadhaarEdt, fatherAadhaarEdt, motherAadhaarEdt, studentPresentAddressEdt, studentPermanentAddressEdt;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
     private String studentID;
+    private Boolean flagA;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,6 +36,7 @@ public class AddStudentActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
+        flagA = false;
         addStudentBtn = findViewById(R.id.idBtnAddStudent);
         studentRollNumberEdt = findViewById(idEdtStudentRollNumber);
         studentFullNameEdt = findViewById(R.id.idEdtStudentFullName);
@@ -53,10 +56,11 @@ public class AddStudentActivity extends AppCompatActivity {
         addStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String studentRollNumber = studentRollNumberEdt.getText().toString();
-                String studentFullName = studentFullNameEdt.getText().toString();
-                String studentBranch = studentBranchEdt.getText().toString();
-                String studentSection = studentSectionEdt.getText().toString();
+                flagA = true;
+                String studentRollNumber = studentRollNumberEdt.getText().toString().toUpperCase();
+                String studentFullName = studentFullNameEdt.getText().toString().toUpperCase();
+                String studentBranch = studentBranchEdt.getText().toString().toUpperCase();
+                String studentSection = studentSectionEdt.getText().toString().toUpperCase();
                 String studentYear = studentYearEdt.getText().toString();
                 String studentPhone = studentPhoneEdt.getText().toString();
                 String parentPhone = parentPhoneEdt.getText().toString();
@@ -70,10 +74,22 @@ public class AddStudentActivity extends AppCompatActivity {
 
                 StudentRVModal studentRVModal = new StudentRVModal(studentID, studentRollNumber, studentFullName, studentBranch, studentSection, studentYear, studentPhone, parentPhone, studentPersonalEmail, studentAadhaar,fatherAadhaar, motherAadhaar, studentPresentAddress, studentPermanentAddress);
                 databaseReference.addValueEventListener(new ValueEventListener() {
+
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(studentID).setValue(studentRVModal);
-                        Toast.makeText(AddStudentActivity.this, "Student Added..", Toast.LENGTH_SHORT).show();
+                        if (snapshot.hasChild(studentID) && flagA){
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Toast.makeText(AddStudentActivity.this, "Student Existed..", Toast.LENGTH_SHORT).show();
+                            finish();
+                            flagA = false;
+                        }
+                        else if (flagA){
+                            databaseReference.child(studentID).setValue(studentRVModal);
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Toast.makeText(AddStudentActivity.this, "Student Added..", Toast.LENGTH_SHORT).show();
+                            finish();
+                            flagA = false;
+                        }
                     }
 
                     @Override

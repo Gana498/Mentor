@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="15dp"
-        android:layout_margin="5dp">
+        app:cardCornerRadius="15dp">
 
 
         <LinearLayout
@@ -17,25 +19,51 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/dp" />
 
-                <Button
-                    android:id="@+id/call"
+                <LinearLayout
+                    android:id="@+id/idButtonLinearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:backgroundTint="@color/green"
-                    android:text="Call" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/idBtnCall"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/green"
+                        android:text="Call" />
+
+                    <Button
+                        android:id="@+id/idBtnWhatsapp"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/green"
+                        android:text="Whatsapp" />
+
+                    <Button
+                        android:id="@+id/mail"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:text="Mail" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -44,28 +72,31 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:text="Name" />
 
                     <TextView
-                        android:id="@+id/show_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/idTVFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
                         android:text=":"
+                        android:textIsSelectable="true"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -79,39 +110,165 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
+                        android:text="Roll_Number"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:text="Roll_Number" />
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/show_roll_number"
+                        android:id="@+id/idTVRollNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:text=":"
+                        android:textIsSelectable="true"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Branch"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/idTVBranch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text=":"
+                        android:textIsSelectable="true"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="Year"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/idTVYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text=":"
+                        android:textIsSelectable="true"
+                        android:layout_gravity="center_vertical"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
 
 
                 <TextView
-                    android:id="@+id/show"
+                    android:id="@+id/idTVShowMoreDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:text="Show more"
                     android:textAlignment="center"
                     android:textColor="@color/blue"
-                    android:textStyle="bold"
-                    android:text="Show more" />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:id="@+id/more_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
-                    >
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Section"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVSection"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Student Mobile"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVStudentMobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Parent Mobile"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVParentMobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -121,83 +278,44 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="3"
+                            android:text="Personal Email"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Email" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/show_email"
+                            android:id="@+id/idTVPersonalEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": 193j1a04c9@raghuinstech.com"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Aadhar Number" />
-
-                        <TextView
-                            android:id="@+id/show_aadhar"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": 123456789"
+                            android:layout_weight="3"
+                            android:text="College Email"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/idTVCollegeEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Mobile Number" />
-
-                        <TextView
-                            android:id="@+id/show_mobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": 9390554529"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Gender" />
-
-                        <TextView
-                            android:id="@+id/show_gender"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": Female"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -210,17 +328,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="3"
+                            android:text="Student Aadhaar"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Seat" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/show_seat"
+                            android:id="@+id/idTVStudentAadhaar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": Convenor"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -233,17 +353,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="3"
+                            android:text="Father Aadhaar"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:text="Branch" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/show_branch"
+                            android:id="@+id/idTVFatherAadhaar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text=": ECE"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -253,25 +375,126 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-
-
-                        <Button
-                            android:id="@+id/whatsapp"
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7"
-                            android:layout_marginHorizontal="5dp"
-                            android:backgroundTint="@color/green"
-                            android:text="Whatsapp" />
+                            android:layout_weight="3"
+                            android:text="Mother Aadhaar"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/mail"
+                        <TextView
+                            android:id="@+id/idTVMotherAadhaar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginHorizontal="5dp"
-                            android:text="Mail" />
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Gender"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Seat"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVSeat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Present Address"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVPresentAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Permanent Address"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/idTVPermanentAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text=":"
+                            android:textIsSelectable="true"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
