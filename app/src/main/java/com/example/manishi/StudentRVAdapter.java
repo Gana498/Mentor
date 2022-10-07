@@ -1,5 +1,8 @@
 package com.example.manishi;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +21,12 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 // database contents in a Recycler View
  class studentRVAdapter extends FirebaseRecyclerAdapter<
         StudentModal, studentRVAdapter.personsViewholder> {
-
+    Context context;
     public studentRVAdapter(
-            @NonNull FirebaseRecyclerOptions<StudentModal> options)
+            @NonNull FirebaseRecyclerOptions<StudentModal> options, Context context)
     {
         super(options);
+        this.context = context;
     }
 
     // Function to bind the view in Card view(here
@@ -66,6 +70,19 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
         holder.CallBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent phone_intent = new Intent(Intent.ACTION_CALL);
+
+                // Set data of Intent through Uri by parsing phone number
+                phone_intent.setData(Uri.parse("tel:" + model.getStudentPhone()));
+                view.getContext().startActivity(phone_intent);
+            }
+        });
+        holder.WhatsappBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://wa.me/+91"+model.getStudentPhone());
+                Intent whatsapp_intent = new Intent(Intent.ACTION_VIEW, uri);
+                view.getContext().startActivity(whatsapp_intent);
             }
         });
 
@@ -91,7 +108,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
         TextView fullName, rollNumber, Year, showMore, Branch, Section,  studentPhone, parentPhone, PersonalEmail,
                 studentAadhaar, fatherAadhaar, motherAadhaar, PresentAddress, PermanentAddress;
         LinearLayout linearLayout, ButtonLinearLayout;
-        Button CallBtn;
+        Button CallBtn, WhatsappBtn;
         public personsViewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -114,6 +131,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
             PresentAddress =  itemView.findViewById(R.id.idTVPresentAddress);
             PermanentAddress =  itemView.findViewById(R.id.idTVPermanentAddress);
             CallBtn =  itemView.findViewById(R.id.idBtnCall);
+            WhatsappBtn =  itemView.findViewById(R.id.idBtnWhatsapp);
 
 
         }

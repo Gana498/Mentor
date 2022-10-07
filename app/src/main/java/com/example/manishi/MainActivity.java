@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<StudentModal> options = new FirebaseRecyclerOptions.Builder<StudentModal>().setQuery(mbase, StudentModal.class).build();
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        adapter = new studentRVAdapter(options);
+        adapter = new studentRVAdapter(options, getApplicationContext());
         // Connecting Adapter class with the Recycler view*/
         recyclerView.setAdapter(adapter);
     }
@@ -91,4 +91,5 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
 }
