@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    public static RecyclerView rView;
     studentRVAdapter
             adapter; // Create Object of the Adapter class
     DatabaseReference mbase; // Create object of the
@@ -57,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Create a instance of the database and get
         // its reference
-        mbase
-                = FirebaseDatabase.getInstance().getReference("Students");
+        mbase = FirebaseDatabase.getInstance().getReference("Students");
 
         recyclerView = findViewById(R.id.idRVStudent);
+        rView = findViewById(R.id.idRVStudent);
 
         // To display the Recycler view linearly
         recyclerView.setLayoutManager(

@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 // FirebaseRecyclerAdapter is a class provided by
 // FirebaseUI. it provides functions to bind, adapt and show
@@ -37,11 +39,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
     onBindViewHolder(@NonNull personsViewholder holder,
                      int position, @NonNull StudentModal model)
     {
-        holder.fullName.setText(":"+ model.getStudentFullName());
+        holder.fullName.setText(":"+ model.getStudentFullName().toUpperCase());
         holder.rollNumber.setText(":"+ model.getStudentRollNumber());
-        holder.Branch.setText(":"+ model.getStudentBranch());
+        holder.Branch.setText(":"+ model.getStudentBranch().toUpperCase());
         holder.Year.setText(":"+ model.getStudentYear());
-        holder.Section.setText(":"+ model.getStudentSection());
+        holder.Section.setText(":"+ model.getStudentSection().toUpperCase());
         holder.studentPhone.setText(":"+ model.getStudentPhone());
         holder.parentPhone.setText(":"+ model.getParentPhone());
         holder.PersonalEmail.setText(":"+ model.getStudentPersonalEmail());
@@ -85,6 +87,20 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
                 view.getContext().startActivity(whatsapp_intent);
             }
         });
+        holder.DeleteStudentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String StudentID = model.getStudentRollNumber();
+                FirebaseDatabase.getInstance().getReference().child("Students").child(StudentID).removeValue();
+                Toast.makeText(context.getApplicationContext(), "Student Deleted..", Toast.LENGTH_SHORT).show();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
     }
 
@@ -108,7 +124,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
         TextView fullName, rollNumber, Year, showMore, Branch, Section,  studentPhone, parentPhone, PersonalEmail,
                 studentAadhaar, fatherAadhaar, motherAadhaar, PresentAddress, PermanentAddress;
         LinearLayout linearLayout, ButtonLinearLayout;
-        Button CallBtn, WhatsappBtn;
+        Button CallBtn, WhatsappBtn, DeleteStudentBtn;
         public personsViewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -117,7 +133,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
             rollNumber = itemView.findViewById(R.id.idTVRollNumber);
             Branch =  itemView.findViewById(R.id.idTVBranch);
             Year =  itemView.findViewById(R.id.idTVYear);
-
+            DeleteStudentBtn = itemView.findViewById(R.id.idBtnDeleteStudent);
             showMore = itemView.findViewById(R.id.idTVShowMoreDetails);
             linearLayout = itemView.findViewById(R.id.more_details);
             ButtonLinearLayout = itemView.findViewById(R.id.idButtonLinearLayout);

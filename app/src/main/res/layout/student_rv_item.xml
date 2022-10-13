@@ -26,7 +26,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/idIVStudent"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/dp" />
@@ -36,11 +36,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
+
 
                     <Button
                         android:id="@+id/idBtnCall"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_weight="1"
@@ -49,7 +50,7 @@
 
                     <Button
                         android:id="@+id/idBtnWhatsapp"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_weight="1"
@@ -57,12 +58,19 @@
                         android:text="Whatsapp" />
 
                     <Button
-                        android:id="@+id/mail"
-                        android:layout_width="100dp"
+                        android:id="@+id/idBtnEdit"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_weight="1"
-                        android:text="Mail" />
+                        android:text="Edit" />
+                    <Button
+                        android:id="@+id/idBtnDeleteStudent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:backgroundTint="#FF1100"
+                        android:text="Delete" />
                 </LinearLayout>
             </LinearLayout>
 

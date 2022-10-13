@@ -34,7 +34,7 @@ public class EditStudentActivity extends AppCompatActivity {
         studentRollNumberEdt = findViewById(R.id.idEdtStudentRollNumber);
         getStudentBtn = findViewById(R.id.idBtnGetStudentData);
         updateStudentBtn =findViewById(R.id.idBtnUpdateStudent);
-        deleteStudentBtn = findViewById(R.id.idBtnDeleteStudent);
+        //deleteStudentBtn = findViewById(R.id.idBtnDeleteStudent);
         studentFullNameEdt = findViewById(R.id.idEdtStudentFullName);
         studentBranchEdt = findViewById(R.id.idEdtStudentBranch);
         studentSectionEdt = findViewById(R.id.idEdtStudentSection);
@@ -50,7 +50,7 @@ public class EditStudentActivity extends AppCompatActivity {
         getStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String studentID = studentRollNumberEdt.getText().toString().trim().toUpperCase();
+                String studentID = studentRollNumberEdt.getText().toString().trim();
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
                 Query query = databaseReference.orderByChild("studentRollNumber").equalTo(studentID);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,7 +88,7 @@ public class EditStudentActivity extends AppCompatActivity {
         updateStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String studentRollNumber = studentRollNumberEdt.getText().toString().toUpperCase();
+                String studentRollNumber = studentRollNumberEdt.getText().toString();
                 String studentFullName = studentFullNameEdt.getText().toString().toUpperCase();
                 String studentBranch = studentBranchEdt.getText().toString().toUpperCase();
                 String studentSection = studentSectionEdt.getText().toString().toUpperCase();
@@ -130,19 +130,6 @@ public class EditStudentActivity extends AppCompatActivity {
                 });
 
 
-            }
-        });
-        deleteStudentBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String StudentID = studentRollNumberEdt.getText().toString().toUpperCase().trim();
-                databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(StudentID);
-                databaseReference.removeValue();
-                // displaying a toast message on below line.
-                // opening a main activity on below line.
-                startActivity(new Intent(EditStudentActivity.this, MainActivity.class));
-                Toast.makeText(getApplicationContext(), "Student Deleted..", Toast.LENGTH_SHORT).show();
-                finish();
             }
         });
     }
